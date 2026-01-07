@@ -1,0 +1,15 @@
+mongo:
+  image: mongo:7
+  storage: 1Gi
+
+backend:
+  image: hedy123fth/gestion-backend:latest
+  port: 5000
+  mongoDb: gestion_academique
+  jwtSecret: devops_secret_123
+  jwtExpiresIn: 7d
+  nodeEnv: production
+
+frontend:
+  image: hedy123fth/gestion-frontend:latest
+  nodePort: 30080

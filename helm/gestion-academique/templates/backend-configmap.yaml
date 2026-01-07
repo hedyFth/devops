@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-backend-config
+data:
+  PORT: "{{ .Values.backend.port }}"
+  MONGO_URI: "mongodb://{{ .Release.Name }}-mongo:27017/{{ .Values.backend.mongoDb }}"
+  JWT_EXPIRES_IN: "{{ .Values.backend.jwtExpiresIn }}"
+  NODE_ENV: "{{ .Values.backend.nodeEnv }}"
