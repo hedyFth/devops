@@ -1,0 +1,117 @@
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                    COMPTES DE TEST - GESTION ACADÉMIQUE                      ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+📅 Date de création: 04/01/2026 14:00:42
+
+═══════════════════════════════════════════════════════════════════════════════
+👤 ADMINISTRATEUR
+═══════════════════════════════════════════════════════════════════════════════
+Email: admin@school.com
+Mot de passe: admin123
+Rôle: ADMINISTRATEUR
+
+═══════════════════════════════════════════════════════════════════════════════
+👨‍🏫 ENSEIGNANTS (TEACHERS)
+═══════════════════════════════════════════════════════════════════════════════
+
+1. Ahmed Benali
+   Email: prof1@school.com
+   Mot de passe: teacher123
+   Code: TCH-001
+   Spécialité: Développement Web
+
+2. Fatima Alaoui
+   Email: prof2@school.com
+   Mot de passe: teacher123
+   Code: TCH-002
+   Spécialité: Base de Données
+
+3. Mohamed Tazi
+   Email: prof3@school.com
+   Mot de passe: teacher123
+   Code: TCH-003
+   Spécialité: Intelligence Artificielle
+
+4. Sanae Idrissi
+   Email: prof4@school.com
+   Mot de passe: teacher123
+   Code: TCH-004
+   Spécialité: Réseaux
+
+
+═══════════════════════════════════════════════════════════════════════════════
+👨‍🎓 ÉTUDIANTS (STUDENTS)
+═══════════════════════════════════════════════════════════════════════════════
+
+1. Youssef Amrani
+   Email: student1@school.com
+   Mot de passe: student123
+   Numéro étudiant: STD-001
+   Groupe: GL5-1
+
+2. Aicha Bennani
+   Email: student2@school.com
+   Mot de passe: student123
+   Numéro étudiant: STD-002
+   Groupe: GL5-1
+
+3. Omar Chraibi
+   Email: student3@school.com
+   Mot de passe: student123
+   Numéro étudiant: STD-003
+   Groupe: GL5-1
+
+4. Laila Dahbi
+   Email: student4@school.com
+   Mot de passe: student123
+   Numéro étudiant: STD-004
+   Groupe: GL5-2
+
+5. Karim El Fassi
+   Email: student5@school.com
+   Mot de passe: student123
+   Numéro étudiant: STD-005
+   Groupe: GL5-2
+
+6. Nadia Hamdi
+   Email: student6@school.com
+   Mot de passe: student123
+   Numéro étudiant: STD-006
+   Groupe: GL4-1
+
+7. Hassan Kadiri
+   Email: student7@school.com
+   Mot de passe: student123
+   Numéro étudiant: STD-007
+   Groupe: GL4-1
+
+8. Sara Lamrani
+   Email: student8@school.com
+   Mot de passe: student123
+   Numéro étudiant: STD-008
+   Groupe: DSI5-1
+
+
+═══════════════════════════════════════════════════════════════════════════════
+📊 RÉSUMÉ DES DONNÉES CRÉÉES
+═══════════════════════════════════════════════════════════════════════════════
+• 4 Groupes
+• 4 Enseignants
+• 8 Étudiants
+• 6 Cours
+• 20 Inscriptions
+• 10 Évaluations
+• 44 Notes
+
+═══════════════════════════════════════════════════════════════════════════════
+📝 NOTES IMPORTANTES
+═══════════════════════════════════════════════════════════════════════════════
+• Tous les mots de passe sont en clair dans ce fichier pour faciliter les tests
+• En production, ces mots de passe doivent être changés
+• Chaque enseignant ne peut voir que ses propres cours
+• Les étudiants peuvent voir tous les cours disponibles pour s'inscrire
+• Les notes sont générées aléatoirement entre 8 et 18
+
+═══════════════════════════════════════════════════════════════════════════════

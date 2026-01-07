@@ -1,0 +1,116 @@
+{
+  "generatedAt": "2026-01-04T13:00:42.366Z",
+  "accounts": [
+    {
+      "role": "ADMIN",
+      "email": "admin@school.com",
+      "password": "admin123",
+      "name": "Administrateur"
+    },
+    {
+      "role": "TEACHER",
+      "email": "prof1@school.com",
+      "password": "teacher123",
+      "name": "Ahmed Benali",
+      "teacherCode": "TCH-001",
+      "specialty": "Développement Web"
+    },
+    {
+      "role": "TEACHER",
+      "email": "prof2@school.com",
+      "password": "teacher123",
+      "name": "Fatima Alaoui",
+      "teacherCode": "TCH-002",
+      "specialty": "Base de Données"
+    },
+    {
+      "role": "TEACHER",
+      "email": "prof3@school.com",
+      "password": "teacher123",
+      "name": "Mohamed Tazi",
+      "teacherCode": "TCH-003",
+      "specialty": "Intelligence Artificielle"
+    },
+    {
+      "role": "TEACHER",
+      "email": "prof4@school.com",
+      "password": "teacher123",
+      "name": "Sanae Idrissi",
+      "teacherCode": "TCH-004",
+      "specialty": "Réseaux"
+    },
+    {
+      "role": "STUDENT",
+      "email": "student1@school.com",
+      "password": "student123",
+      "name": "Youssef Amrani",
+      "studentNumber": "STD-001",
+      "groupe": "GL5-1"
+    },
+    {
+      "role": "STUDENT",
+      "email": "student2@school.com",
+      "password": "student123",
+      "name": "Aicha Bennani",
+      "studentNumber": "STD-002",
+      "groupe": "GL5-1"
+    },
+    {
+      "role": "STUDENT",
+      "email": "student3@school.com",
+      "password": "student123",
+      "name": "Omar Chraibi",
+      "studentNumber": "STD-003",
+      "groupe": "GL5-1"
+    },
+    {
+      "role": "STUDENT",
+      "email": "student4@school.com",
+      "password": "student123",
+      "name": "Laila Dahbi",
+      "studentNumber": "STD-004",
+      "groupe": "GL5-2"
+    },
+    {
+      "role": "STUDENT",
+      "email": "student5@school.com",
+      "password": "student123",
+      "name": "Karim El Fassi",
+      "studentNumber": "STD-005",
+      "groupe": "GL5-2"
+    },
+    {
+      "role": "STUDENT",
+      "email": "student6@school.com",
+      "password": "student123",
+      "name": "Nadia Hamdi",
+      "studentNumber": "STD-006",
+      "groupe": "GL4-1"
+    },
+    {
+      "role": "STUDENT",
+      "email": "student7@school.com",
+      "password": "student123",
+      "name": "Hassan Kadiri",
+      "studentNumber": "STD-007",
+      "groupe": "GL4-1"
+    },
+    {
+      "role": "STUDENT",
+      "email": "student8@school.com",
+      "password": "student123",
+      "name": "Sara Lamrani",
+      "studentNumber": "STD-008",
+      "groupe": "DSI5-1"
+    }
+  ],
+  "summary": {
+    "groups": 4,
+    "teachers": 4,
+    "students": 8,
+    "courses": 6,
+    "enrollments": 20,
+    "assessments": 10,
+    "grades": 44
+  }
+}
