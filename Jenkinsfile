@@ -20,38 +20,35 @@ pipeline {
 
     stage('Build Docker Images') {
       steps {
-        bat 'docker build -t %BACKEND_IMAGE%  ./gestion-academique-backend'
-        bat 'docker build -t %FRONTEND_IMAGE% ./gestion-academique-frontend'
+        sh 'docker build -t $BACKEND_IMAGE  ./gestion-academique-backend'
+        sh 'docker build -t $FRONTEND_IMAGE ./gestion-academique-frontend'
       }
     }
 
     stage('Trivy Scan') {
       steps {
-        // Scan backend
-        bat 'docker run --rm aquasec/trivy:latest image --severity HIGH,CRITICAL --exit-code 1 %BACKEND_IMAGE%'
-
-        // Scan frontend
-        bat 'docker run --rm aquasec/trivy:latest image --severity HIGH,CRITICAL --exit-code 1 %FRONTEND_IMAGE%'
+        sh 'docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy:latest image --severity HIGH,CRITICAL --exit-code 1 $BACKEND_IMAGE'
+        sh 'docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy:latest image --severity HIGH,CRITICAL --exit-code 1 $FRONTEND_IMAGE'
       }
     }
 
     stage('DockerHub Login') {
       steps {
-        bat 'echo %DOCKERHUB_PASS% | docker login -u %DOCKERHUB_USER% --password-stdin'
+        sh 'echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USER" --password-stdin'
       }
     }
 
     stage('Push Images') {
       steps {
-        bat 'docker push %BACKEND_IMAGE%'
-        bat 'docker push %FRONTEND_IMAGE%'
+        sh 'docker push $BACKEND_IMAGE'
+        sh 'docker push $FRONTEND_IMAGE'
       }
     }
   }
 
   post {
     always {
-      bat 'docker logout'
+      sh 'docker logout || true'
     }
   }
 }
