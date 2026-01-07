@@ -1,58 +1,37 @@
-# 🚀 Projet DevOps – Déploiement CI/CD d’une application de Gestion Académique
+# 🚀 Projet DevOps – Déploiement CI/CD d’une Application de Gestion Académique
 
-## 📌 Présentation
-Ce projet a pour objectif de mettre en place une **chaîne DevOps complète** pour le déploiement, l’orchestration, le monitoring et le GitOps d’une application web de **Gestion Académique**.
+## 📌 Présentation du projet
+Ce projet consiste à mettre en place une **chaîne DevOps complète** pour le déploiement et la gestion d’une application web de **Gestion Académique**.
 
-L’application est composée de :
-- un **Frontend** (application web),
-- un **Backend** (API REST),
-- une **Base de données MongoDB**.
-
-Le projet couvre toutes les étapes modernes du DevOps : **Docker, Jenkins, Kubernetes, Helm, Prometheus/Grafana et ArgoCD**.
-
----
-
-## 🎯 Objectifs du projet
-- Conteneuriser une application web
-- Automatiser le build et le push des images Docker
-- Déployer l’application sur Kubernetes
-- Gérer les déploiements avec Helm
-- Mettre en place le monitoring
-- Implémenter une approche **GitOps** avec ArgoCD
+L’objectif est d’appliquer les bonnes pratiques DevOps modernes :
+- conteneurisation,
+- intégration continue,
+- orchestration Kubernetes,
+- déploiement automatisé,
+- monitoring,
+- GitOps.
 
 ---
 
-## 🏗️ Architecture globale
+## 🧱 Architecture de l’application
+L’application est composée de trois services principaux :
 
-Développeur
-|
-|--> GitHub (code + Helm)
-|
-|--> Jenkins (CI)
-| - Build images Docker
-| - Push Docker Hub
-|
-|--> ArgoCD (GitOps)
-|
-|--> Kubernetes Cluster
-- Frontend
-- Backend
-- MongoDB
-- Monitoring
+- **Frontend** : application web
+- **Backend** : API REST
+- **Base de données** : MongoDB
 
-yaml
-Copy code
+Ces services sont déployés dans un **cluster Kubernetes**.
 
 ---
 
 ## 🧰 Technologies utilisées
-- **Docker & Docker Compose**
-- **Jenkins**
-- **Kubernetes (Docker Desktop)**
-- **Helm**
-- **Prometheus & Grafana**
-- **ArgoCD**
-- **GitHub**
+- Docker & Docker Compose  
+- Jenkins (CI)  
+- Kubernetes (Docker Desktop)  
+- Helm  
+- Prometheus & Grafana  
+- ArgoCD (GitOps)  
+- GitHub  
 
 ---
 
@@ -65,30 +44,27 @@ ProjetSemestriel/
 │ └── Dockerfile
 ├── docker-compose.yml
 ├── Jenkinsfile
-├── k8s/ # Manifests Kubernetes bruts (pédagogique)
+├── k8s/ # Manifestes Kubernetes bruts (pédagogiques)
 ├── helm/
-│ └── gestion-academique/ # Helm Chart (utilisé en production)
+│ └── gestion-academique/ # Helm Chart (déploiement principal)
 │ ├── Chart.yaml
 │ ├── values.yaml
 │ └── templates/
 └── README.md
 
-yaml
-Copy code
-
 ---
 
 ## 🔹 Étape 1 – Conteneurisation (Docker)
-
-- Création de Dockerfiles pour le frontend et le backend
+- Création des **Dockerfiles** pour le frontend et le backend
 - Construction des images Docker
-- Test local avec Docker Compose
+- Test local de l’application avec Docker Compose
 
 Commande :
 ```bash
 docker-compose up --build
 🔹 Étape 2 – Intégration Continue (Jenkins)
-Un pipeline Jenkins est mis en place pour :
+
+Un pipeline Jenkins est utilisé pour :
 
 Cloner le dépôt GitHub
 
@@ -96,14 +72,14 @@ Construire les images Docker
 
 Pousser les images vers Docker Hub
 
-📄 Fichier :
+📄 Fichier concerné :
 
 Jenkinsfile
+🔹 Étape 3 – Déploiement Kubernetes (YAML)
 
-🔹 Étape 3 – Kubernetes (YAML)
-Déploiement manuel initial avec des manifestes Kubernetes :
+Création manuelle des manifestes Kubernetes pour :
 
-MongoDB + PVC
+MongoDB + Persistent Volume
 
 Backend
 
@@ -115,99 +91,77 @@ Services (ClusterIP / NodePort)
 
 k8s/
 
-Ces fichiers sont conservés à des fins pédagogiques.
-
+Ces fichiers sont conservés à titre pédagogique.
 🔹 Étape 4 – Helm
+
 Helm est utilisé pour :
 
-Centraliser la configuration
+Centraliser la configuration Kubernetes
 
-Faciliter les mises à jour
+Simplifier les mises à jour
 
-Industrialiser les déploiements Kubernetes
+Faciliter les déploiements reproductibles
 
-Commandes utilisées :
-
-bash
-Copy code
+Commandes :
 helm install gestion ./helm/gestion-academique
 helm upgrade gestion ./helm/gestion-academique
 🔹 Étape 5 – Monitoring (Prometheus & Grafana)
-Installation via Helm du stack Prometheus
 
-Visualisation des métriques du cluster Kubernetes
+Installation de Prometheus via Helm
 
-Accès Grafana via port-forward
+Visualisation des métriques Kubernetes avec Grafana
 
-Commande :
-
-bash
-Copy code
+Accès Grafana :
 kubectl port-forward svc/mon-grafana 3000:80 -n monitoring
+➡️ http://localhost:3000
+
 🔹 Étape 6 – GitOps avec ArgoCD
-Principe GitOps
-Le dépôt GitHub devient la source de vérité.
-ArgoCD synchronise automatiquement le cluster Kubernetes avec le contenu du dépôt.
 
-Déploiement
-ArgoCD installé dans le namespace argocd
+Le déploiement est automatisé via ArgoCD selon le principe GitOps.
 
-Application ArgoCD créée avec :
+Le dépôt GitHub est la source de vérité
 
-Repository GitHub
+ArgoCD surveille le Helm Chart
 
-Path : helm/gestion-academique
-
-Mode : Helm
-
-Synchronisation automatique
+Toute modification Git est automatiquement synchronisée
 
 Résultat :
 
-Status : Synced
+Application Healthy
 
-Health : Healthy
+État Synced
 
-▶️ Démarrer le projet après redémarrage
+▶️ Démarrer le projet après redémarrage du PC
+
 Lancer Docker Desktop (Kubernetes activé)
 
 Vérifier le cluster :
-
-bash
-Copy code
 kubectl get nodes
 Vérifier ArgoCD :
-
-bash
-Copy code
 kubectl get pods -n argocd
-Ouvrir ArgoCD :
-
-bash
-Copy code
 kubectl port-forward -n argocd svc/argocd-server 8088:443
-👉 https://localhost:8088
 
+Accéder à ArgoCD :
+➡️ https://localhost:8088
 Accéder à l’application :
-
-arduino
-Copy code
 http://localhost:30080
 ✅ Résultats obtenus
-Application déployée automatiquement
 
-Cluster Kubernetes opérationnel
+Déploiement automatique de l’application
 
-Monitoring fonctionnel
+Cluster Kubernetes fonctionnel
 
-Déploiement GitOps via ArgoCD
+Monitoring opérationnel
+
+Déploiement GitOps avec ArgoCD
 
 🎓 Conclusion
-Ce projet met en œuvre une chaîne DevOps complète et moderne, couvrant :
+
+Ce projet démontre la mise en œuvre d’une chaîne DevOps moderne et complète, intégrant :
 
 CI/CD
 
-Orchestration Kubernetes
+Kubernetes
 
 Helm
 
@@ -215,8 +169,8 @@ Monitoring
 
 GitOps
 
-Il représente une implémentation réaliste et professionnelle d’un environnement DevOps.
-
+Il constitue une implémentation réaliste conforme aux standards professionnels.
 👤 Auteur
+
 Hedy Fathallah
 Projet DevOps – Gestion Académique
